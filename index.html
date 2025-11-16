@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TO Thoughter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    // 配置Tailwind自定义主题
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#FF7D00',
+            neutral: '#F5F7FA',
+            dark: '#1D2129',
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['Roboto Mono', 'monospace'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease-in-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(30px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      .ticket-dash {
+        background-image: linear-gradient(to right, #165DFF 50%, transparent 50%);
+        background-size: 10px 2px;
+        background-repeat: repeat-x;
+      }
+      .ticket-shadow {
+        box-shadow: 0 10px 30px rgba(22, 93, 255, 0.15);
+      }
+      .bg-blur {
+        backdrop-filter: blur(8px);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter bg-dark min-h-screen flex items-center justify-center p-4 overflow-hidden">
+  <!-- 背景图片 -->
+  <div class="fixed inset-0 z-0">
+    <img src="./bg.webp" alt="大学背景" class=" object-cover opacity-40">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-dark/80"></div>
+  </div>
+
+  <!-- 主容器 -->
+  <div class="relative z-10 w-full max-w-3xl">
+    <!-- 页面标题 -->
+    <div class="text-center mb-6 animate-fade-in">
+      <h1 class="text-[clamp(1.8rem,5vw,2.8rem)] font-bold text-white text-shadow-lg mb-2">
+        
+      </h1>
+      <p class="text-[clamp(1rem,2vw,1.2rem)] text-gray-200 opacity-90">
+        一张前往理想大学的车票
+      </p>
+    </div>
+
+    <!-- 车票卡片 -->
+    <div class="bg-white rounded-xl ticket-shadow rounded-b-[40px] overflow-hidden animate-slide-up transform transition-transform duration-300 hover:scale-[1.01]">
+      <!-- 车票顶部 -->
+      <div class="bg-primary text-white p-6 relative">
+        <div class="absolute top-4 right-4 flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-sm">
+          <i class="fa fa-ticket"></i>
+        </div>
+        
+        <div class="flex justify-between items-center mb-4">
+          <div class="font-mono text-lg">NO. 202620</div>
+          <div class="text-lg font-semibold">Group 8</div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div class="text-center">
+            <div class="text-sm opacity-80">出发地</div>
+            <div class="text-2xl font-bold mt-1">Class 20</div>
+          </div>
+          
+          <div class="flex-1 mx-4 flex items-center justify-center">
+            <div class="h-0.5 ticket-dash w-full"></div>
+            <i class="fa fa-train text-2xl mx-2 animate-pulse-slow"></i>
+            <div class="h-0.5 ticket-dash w-full"></div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-sm opacity-80">目的地</div>
+            <div class="text-2xl font-bold mt-1 text-secondary">PKU</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 车票中部 -->
+      <div class="p-6 bg-neutral">
+        <!-- 个人信息区域 -->
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-primary/20">
+            <img src="./fav.jpg" alt="个人头像" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1">
+            <div class="flex justify-between items-center">
+              <h2 class="text-xl font-bold text-dark">张知予</h2>
+              <div class="font-mono text-sm text-gray-500">座位号: A12</div>
+            </div>
+            <div class="text-gray-600 mt-1">
+              <i class="fa fa-calendar-o mr-1"></i> 出发日期: 2026年6月7日
+            </div>
+          </div>
+        </div>
+
+        <!-- 分割线 -->
+        <div class="ticket-dash w-full my-6"></div>
+
+        <!-- 个人寄语 -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold text-primary mb-2 flex items-center">
+            <i class="fa fa-quote-left mr-2"></i> 寄语
+          </h3>
+          <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-primary">
+            <p class="text-gray-700 leading-relaxed">
+               少打瞌睡，多努力；别被点名，别摸鱼；有所取舍，有所追求；激情投入，专注用力。
+            </p>
+          </div>
+        </div>
+
+        <!-- 一言区域 -->
+        <div>
+          <h3 class="text-lg font-semibold text-primary mb-2 flex items-center">
+            <i class="fa fa-lightbulb-o mr-2"></i> 今日一言
+          </h3>
+          <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-secondary" id="hitokoto-container">
+            <p class="text-gray-700 leading-relaxed" id="hitokoto">
+              加载中...
+            </p>
+            <div class="text-right text-sm text-gray-500 mt-2" id="hitokoto-from">
+              —— 未知
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 车票底部 -->
+      <div class="bg-primary/90 text-white p-4 flex justify-between items-center rounded-b-[40px]">
+        <div class="flex items-center gap-2">
+          <i class="fa fa-qrcode text-xl"></i>
+          <span class="text-sm opacity-80"></span>
+        </div>
+        <div class="text-sm opacity-80">
+          <i class="fa fa-clock-o mr-1"></i> 有效期: 202606
+        </div>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="text-center mt-6 text-gray-300 text-sm animate-fade-in" style="animation-delay: 0.3s">
+      <p>啊哈！是zzy！ <i class="fa fa-star text-secondary"></i></p>
+    </div>
+  </div>
+
+  <!-- 一言API调用 -->
+  <script>
+    // 加载一言数据
+    async function fetchHitokoto() {
+      try {
+        const response = await fetch('https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&c=e&c=f');
+        const data = await response.json();
+        document.getElementById('hitokoto').textContent = data.hitokoto;
+        document.getElementById('hitokoto-from').textContent = `—— ${data.from || '未知'}`;
+        
+        // 添加淡入动画
+        const container = document.getElementById('hitokoto-container');
+        container.classList.add('animate-fade-in');
+      } catch (error) {
+        document.getElementById('hitokoto').textContent = '激情投入，专注用力';
+        document.getElementById('hitokoto-from').textContent = '—— 熊翼';
+      }
+    }
+
+    // 页面加载完成后获取一言
+    window.addEventListener('DOMContentLoaded', fetchHitokoto);
+  </script>
+</body>
+</html>
